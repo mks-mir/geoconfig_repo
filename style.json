@@ -1,16 +1,31 @@
 {
   "version": 8,
-  "name": "OSM Raster",
   "sources": {
-    "osm": {
-      "type": "raster",
-      "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-      "tileSize": 256,
-      "attribution": "© OpenStreetMap contributors"
+    "my_geojson": {
+      "type": "geojson",
+      "data": "https://raw.githubusercontent.com/mks-mir/geoconfig_repo/main/geojson.json"
     }
   },
   "layers": [
-    { "id": "osm", "type": "raster", "source": "osm", "minzoom": 0, "maxzoom": 19 }
+    {
+      "id": "my_geojson_fill",
+      "type": "fill",
+      "source": "my_geojson",
+      "paint": {
+        "fill-color": "#4F7CAC",
+        "fill-opacity": 0.4
+      }
+    },
+    {
+      "id": "my_geojson_outline",
+      "type": "line",
+      "source": "my_geojson",
+      "paint": {
+        "line-color": "#2E4057",
+        "line-width": 1
+      }
+    }
   ],
-  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+  "sprite": "https://demotiles.maplibre.org/styles/osm-bright/sprite"
 }
